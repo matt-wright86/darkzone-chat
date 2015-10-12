@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
@@ -47,3 +47,5 @@ end
 gem 'react-rails', '~> 1.3.0'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'simple_form'
+
+gem 'rails_12factor', group: :production
