@@ -4,7 +4,7 @@ var TopLevel = React.createClass({
  getInitialState(){
 
     return{
-       chatRooms: []
+       chatRooms: this.props.initialChatRooms
     }
    },
 
