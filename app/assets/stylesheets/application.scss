@@ -1,2 +1,27 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body{
+  background-color: #000;
+  color: #fff;
+}
+
+.row{
+  // padding-top: 20px;
+}
+
+.vleft{
+  background-color: #ccc;
+  // height: 500px;
+  color: red;
+}
+.vright{
+  background-color: #333;
+    height: 300px;
+    border: solid #ccc 1px;
+    color: #fff;
+}
+
+.list-group{
+  cursor: crosshair;
+}

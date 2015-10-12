@@ -1,14 +1,8 @@
-<h1>Zone#index</h1>
-<p>Find me in app/views/zone/index.html.erb</p>
+<div class="page-header">
+  <h1>Darkzone <small>messngr updates</small></h1>
 
-
-<div container="container">
-  <% @users.each do |user|%>
-
-  <%=user.email%> - email
-  <br>
-  <%=user.username%> - username
-  <br>
-
-  <% end %>
+<small class="text-right"><%= link_to "Sign Out", sign_out_path, method: :delete %></small>
 </div>
+
+
+<%= react_component 'TopLevel', {initialChatRooms: @chatrooms} %>
