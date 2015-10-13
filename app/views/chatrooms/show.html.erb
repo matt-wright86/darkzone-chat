@@ -6,7 +6,9 @@
 
 
   <div class="col-md-2">
+    Chatrooms
     <div class="vleft">
+
      <ul class="list-group">
         <% @chatrooms.each do |chatroom| %>
       <li class="list-group-item"> <%= link_to chatroom.roomname, chatroom_path(id: chatroom.id) %></li>
