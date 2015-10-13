@@ -5,7 +5,8 @@ var ChatBox = React.createClass({
 
     <div className="col-md-10">
       <div className="vright">
-        right
+      {this.props.message.text}
+       <cite>Posted by {this.props.message.user.username}</cite>
       </div>
     </div>
 

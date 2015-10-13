@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1>Darkzone <small>messngr updates</small></h1>
+
+<small class="text-right"><%= link_to "Sign Out", sign_out_path, method: :delete %></small>
+</div>
+
+
+  <div class="col-md-2">
+    <div class="vleft">
+     <ul class="list-group">
+        <% @chatrooms.each do |chatroom| %>
+      <li class="list-group-item"> <%= link_to chatroom.roomname, chatroom_path(id: chatroom.id) %></li>
+        <% end %>
+    </ul>
+    </div>
+  </div>
+
+
+<%= react_component 'TopLevel', {chatroom: @chatroom} %>

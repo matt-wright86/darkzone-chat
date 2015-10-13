@@ -1,4 +1,4 @@
-50.times do
+100.times do
     plain = User.new
 
     plain.password = "12345678",
@@ -6,7 +6,7 @@
     plain.username = Faker::Internet.user_name
     plain.save
 
-plain.messages.create text: Faker::Lorem.sentence, chatroom_id: rand(1...6)
+plain.messages.create text: Faker::Lorem.sentence, chatroom_id: rand(1..6)
 end
 
 6.times do

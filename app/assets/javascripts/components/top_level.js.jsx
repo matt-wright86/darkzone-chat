@@ -1,43 +1,50 @@
 var TopLevel = React.createClass({
 
 
- getInitialState(){
-
-    return{
-       chatRooms: this.props.initialChatRooms
-    }
+  getInitialState(){
+     return {
+       chatroom: {
+         roomname: "",
+         id: this.props.chatroom.id,
+         messages: []
+       }
+     }
    },
 
 
    fetchChatRooms(){
    var component = this;
 
-   fetch("/api/chatrooms").then(function(response){
-     response.json().then(function(data){
-       component.setState({chatRooms: data.chatRooms});
-     });
-   });
+   $.getJSON("/api/chatrooms/" + this.state.chatroom.id + ".json")
+      .done(function(json){
+        component.setState({chatroom: json.chatroom});
+      })
  },
 
  componentDidMount(){
      this.fetchChatRooms();
+
+     this.messageInterval = setInterval(this.fetchChatRooms, 3000);
    },
 
- render() {
-     return <div className="container">
-     <div className="row">
+   componentWillUnmount(){
+    clearInterval(this.messageInterval);
+  },
 
-          <div className="col-md-2">
-           <div className="vleft">
-             <ul className="list-group">
-       {this.state.chatRooms.map(function(chatRooms){
-         return <li className="list-group-item">{chatRooms.roomname}</li>
-       })}
-       </ul>
-     </div>
-     </div>
-     <ChatBox />
-     </div>
+
+ render: function() {
+     return <div className="container">
+
+          <div className="col-md-10">
+          Room: {this.state.chatroom.roomname}, {this.state.chatroom.messages.length} msgs
+           <div className="vright">
+        {this.state.chatroom.messages.map(function(message){
+          return <Msg message={message}></Msg>
+        })}
+        </div>
+       </div>
+
+    <Msgbox chatroom={this.state.chatroom}></Msgbox>
      </div>;
    }
 });

@@ -1,9 +1,10 @@
 class Api::ChatroomsController < ApplicationController
 
-  def index
-    @chatrooms = Chatroom.all
-    @messages = Message.all
-    render json: {chatRooms: @chatrooms}
+  before_action :authenticate_user!
+
+  def show
+    @chatroom = Chatroom.find params[:id]
   end
+
 
 end
